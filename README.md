@@ -18,7 +18,7 @@ Adiciona-lo no projeto é simples, é apenas um comando:
 yarn add react-native-paper
 ``` 
 
-- Foi alterado A API [shows-api](https://github.com/brigolini/shows-api) para o do [episodate/api](https://www.episodate.com/api), por motivos de imagens melhores e ao adicionar uma nova série, ele procura no __episodate__ e adicona na lista de séries.
+- Foi alterado A API [shows-api](https://github.com/brigolini/shows-api) para o do [episodate/api](https://www.episodate.com/api), por motivos de imagens melhores e ao adicionar uma nova série, ele procura no __episodate__ (também visto no módulo 1) e adicona na lista de séries.
 
 - Código foi fatorado a medida que foi sentida a necessidade, não é um código limpo muito menos com arquivos de teste.
 
