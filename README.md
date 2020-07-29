@@ -29,3 +29,7 @@ Apesar de poder ver o código e mexer nele online pelo
 e ver localmente, um vez que o Expo Web buga o ícones do bottomBar e na versão Android do expo as imagens não ficam dimensionada corretamente devido um bugo do
 react-native-paper, a qual você pode consertar fazendo uma gabiarra:
 [issue](https://github.com/callstack/react-native-paper/issues/1272)
+
+## Um gif exemplo como ficou aplicação
+
+![](lost.gif)
