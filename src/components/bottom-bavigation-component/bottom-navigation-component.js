@@ -1,8 +1,8 @@
 import React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
-import HomeScreen from '../../Screens/home-screen';
-import ShowsScreen from '../../Screens/shows-screen';
-import NewShowScreen from '../../Screens/new-show-screen';
+import HomeScreen from '../../screens/home-screen';
+import ShowsScreen from '../../screens/shows-screen';
+import NewShowScreen from '../../screens/new-show-screen';
 
 
 const AppButtonNavigation = () => {
