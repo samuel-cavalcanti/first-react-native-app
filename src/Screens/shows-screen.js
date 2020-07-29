@@ -5,7 +5,7 @@ import Shows from "../components/shows-component/shows-component"
 
 const ShowsScreen = (props) => (
     <View style={styles.container}>
-        <Shows></Shows>
+        <Shows/>
     </View>
 )
 

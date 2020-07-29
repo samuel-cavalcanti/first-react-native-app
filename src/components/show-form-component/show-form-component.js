@@ -1,46 +1,40 @@
-import React, { useState } from 'react';
-import { StyleSheet } from "react-native"
-import { TextInput, Button } from 'react-native-paper';
+import React, {useState} from 'react';
+import {StyleSheet} from "react-native"
+import {Button, TextInput} from 'react-native-paper';
 
 const ShowForm = (props) => {
 
-    const { labels, submit, buttonText } = props
+    const {labels, submit, buttonText} = props
 
-    const [stateForm, setStateForm] = useState({})
+    const cleanState = Object.keys(labels).map((key) => ({[key]: ""}))
+        .reduce((result, next) => ({...result, ...next}))
+
+    const [stateForm, setStateForm] = useState({...cleanState})
 
 
     const mapLabelsToTextInput = (label, index) => (
         <TextInput label={labels[label]} key={index} style={styles.input} value={stateForm[label]}
-            onChangeText={(text) => {
-                const newStateForm = { ...stateForm }
-                newStateForm[label] = text
-                setStateForm(newStateForm)
-            }} />
+                   onChangeText={(text) => {
+                       const newStateForm = {...stateForm}
+                       newStateForm[label] = text
+                       setStateForm(newStateForm)
+                   }}/>
     )
-
-
-    const clean = () => {
-        const newState = {}
-        Object.keys(labels).forEach((label) => newState[label] = null)
-        setStateForm(newState)
-    }
 
     const onPress = () => {
         submit(stateForm)
-        clean()
+        setStateForm({...cleanState})
     }
-
 
     return (
         <>
             {Object.keys(labels).map(mapLabelsToTextInput)}
 
-            <Button mode="contained" style={styles.save} onPress={onPress} >{buttonText}</Button>
+            <Button mode="contained" style={styles.save} onPress={onPress}>{buttonText}</Button>
         </>
     )
 
 }
-
 
 
 const styles = StyleSheet.create({

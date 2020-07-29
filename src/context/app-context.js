@@ -25,7 +25,7 @@ const appReducer = (state, action) => {
         case Actions.addItem:
             const shows = state.shows
             shows.push(action.payload)
-            return { ...state, shows, resync: action.payload }
+            return { ...state, shows, reSync: action.payload }
 
         default:
             return state
@@ -36,9 +36,9 @@ const appReducer = (state, action) => {
 }
 
 const initialState = {
-    shows: new Array(),
+    shows: [],
     itemSelected: null,
-    resync: null
+    reSync: null
 }
 
 

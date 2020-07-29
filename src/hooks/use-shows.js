@@ -1,44 +1,56 @@
-import ShowAPI from "../api/show-api"
-import { useEffect, useContext } from "react"
-import { AppContext, Actions } from "../context/app-context"
+import EpisodateAPI from "../api/episodate-api"
+import {useContext, useEffect} from "react"
+import {Actions, AppContext} from "../context/app-context"
 
 const useShows = () => {
-    const { state, dispatch } = useContext(AppContext)
+    const {state, dispatch} = useContext(AppContext)
 
 
     const getShowsCallback = (response) => {
 
-        const action = Actions.createAction(Actions.createShows, response.data)
+        const action = Actions.createAction(Actions.createShows, response.data["tv_shows"])
 
         dispatch(action)
 
     }
 
     useEffect(() => {
-        ShowAPI.get("/shows").then(getShowsCallback.bind(this))
-    }, [state.resync])
-
+        if (state.reSync === null)
+            EpisodateAPI.get("/most-popular").then(getShowsCallback.bind(this))
+    }, [state.reSync])
 
 
     const addShow = async (show) => {
 
-        console.info(show)
+        console.info("search show: ", show)
 
-        return
+        const response = await EpisodateAPI.get(`/show-details?q=${show.name}`, show)
 
-        const response = await ShowAPI.post("/shows", show)
 
-        console.info("response add Show", response.data)
+        const new_show = {}
 
-        const action = Actions.createAction(Actions.addItem, response.data)
+        Object.keys(show).forEach((key) => {
+            new_show[key] = response.data["tvShow"][key]
+
+        })
+        new_show.id = response.data["tvShow"].id
+        new_show.description = show.description
+
+
+        const old_show = state.shows.filter((show) => show.id === new_show.id)
+
+        console.info(old_show)
+
+        if (old_show.length)
+            return
+
+        const action = Actions.createAction(Actions.addItem, new_show)
         dispatch(action)
     }
 
 
-    return { shows: state.shows, addShow }
+    return {shows: state.shows, addShow}
 }
-
-
 
 
 export default useShows
