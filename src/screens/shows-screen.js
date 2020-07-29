@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from "react-native"
+import {StyleSheet, View} from "react-native"
 import Shows from "../components/shows-component/shows-component"
 
 
@@ -14,7 +14,7 @@ export default ShowsScreen
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20
-
+        marginTop: 20,
+        flex: 1,
     },
 });
