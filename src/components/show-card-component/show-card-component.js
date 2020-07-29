@@ -1,5 +1,5 @@
 import React from 'react';
-import {Caption, Card, Paragraph, Title} from 'react-native-paper';
+import {Caption, Card, Paragraph, Title} from '../../../forks/react-native-paper'; // Gambiarras a gente aprende
 import {StyleSheet} from "react-native"
 
 
